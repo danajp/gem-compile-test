@@ -1,6 +1,6 @@
-FROM ruby:2.4.1-alpine
+FROM ruby:2.4.1-slim
 
-RUN apk --no-cache add make build-base
+RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends build-essential
 
 COPY Gemfile Gemfile.lock .ruby-version /app/
 COPY test.rb /app/
